@@ -11,11 +11,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
 	res.send("<h1>Welcome to my API</h1>");
 });
-app.get("/person", (req, res) => {
+app.get("/api/person", (req, res) => {
 	res.json(data);
 });
 
-app.get("/person/:id", (req, res) => {
+app.get("/api/person/:id", (req, res) => {
 	const id = Number(req.params.id);
 	personData = data.filter((person) => person.id === id);
 	console.log(personData === false);
@@ -26,13 +26,13 @@ app.get("/person/:id", (req, res) => {
 	}
 });
 
-app.delete("/person/:id", (req, res) => {
+app.delete("/api/person/:id", (req, res) => {
 	const id = req.params.id;
 	personData = data.map((person) => person.id !== id);
 	res.status(204).json(personData);
 });
 
-app.post("/person", (req, res) => {
+app.post("/api/person", (req, res) => {
 	const body = req.body;
 	if (!req.body.name) {
 		return res.status(404).json({ Error: "Name is required" });
