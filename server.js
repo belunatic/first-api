@@ -27,10 +27,17 @@ app.get("/api/person/:id", (req, res) => {
 });
 
 app.delete("/api/person/:id", (req, res) => {
-	const id = req.params.id;
-	data = data.map((person) => person.id !== id);
-	res.status(204).json(data);
+	const id = Number(req.params.id);
+	data = data.filter((person) => person.id !== id);
+	res.status(204).end();
 });
+
+//generate an id
+const generateId = () => {
+	const maxId =
+		data.length > 0 ? Math.max(...data.map((n) => Number(n.id))) : 0;
+	return maxId + 1;
+};
 
 app.post("/api/person", (req, res) => {
 	const body = req.body;
@@ -41,7 +48,7 @@ app.post("/api/person", (req, res) => {
 	}
 
 	const personData = {
-		id: data.length + 1,
+		id: generateId(),
 		name: req.body.name,
 		age: req.body.age,
 		address: req.body.address || "NA",
