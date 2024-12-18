@@ -41,4 +41,11 @@ module.exports = [
 		address: "303 Pine Blvd, Anytown, USA",
 		phone_number: "555-2345",
 	},
+	{
+		id: 7,
+		name: "Abel Sila",
+		age: 38,
+		address: "1716 Pine Blvd, Anytown, USA",
+		phone_number: "555-1325",
+	},
 ];
