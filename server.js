@@ -28,8 +28,8 @@ app.get("/api/person/:id", (req, res) => {
 
 app.delete("/api/person/:id", (req, res) => {
 	const id = req.params.id;
-	personData = data.map((person) => person.id !== id);
-	res.status(204).json(personData);
+	data = data.map((person) => person.id !== id);
+	res.status(204).json(data);
 });
 
 app.post("/api/person", (req, res) => {
